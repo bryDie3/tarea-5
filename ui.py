@@ -1,9 +1,3 @@
-"""
-Interfaz gráfica para el sistema de Undo/Redo.
-Usa Tkinter y consume UndoRedoSystem sin mezclar lógica con la UI.
-
-Autor: Kilo
-"""
 
 import tkinter as tk
 from tkinter import ttk, messagebox
