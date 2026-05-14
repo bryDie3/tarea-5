@@ -1,15 +1,3 @@
-"""
-Core system logic for undo/redo functionality.
-Uses the custom Deque class to manage action history.
-
-Design decisions:
-- 'undo_stack' stores all past actions (most recent at rear for efficient removal)
-- 'redo_stack' stores actions that were undone (can be re-applied)
-- Performing a new action clears the redo stack (standard undo/redo behavior)
-- Each action is a dict with 'name' and optional 'data' for display purposes
-
-Autor: Kilo
-"""
 
 from deque import Deque
 
