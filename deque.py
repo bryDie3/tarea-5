@@ -1,12 +1,3 @@
-"""
-Custom Deque implementation using a doubly-linked list.
-All operations are O(1). The internal storage uses a Python list
-but all access is strictly through the deque interface.
-
-Autor: Kilo
-"""
-
-
 class DequeNode:
     """Nodo individual del Deque."""
 
