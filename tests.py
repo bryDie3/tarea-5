@@ -1,9 +1,3 @@
-"""
-Pruebas unitarias para el Deque y el sistema UndoRedo.
-Usa unittest (estándar de Python, sin dependencias externas).
-
-Autor: Kilo
-"""
 
 import unittest
 import sys
