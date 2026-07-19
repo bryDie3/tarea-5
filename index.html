@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git & GitHub - Comandos Esenciales</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #2d3561, #1a1a2e);
+      text-align: center;
+      padding: 40px 20px;
+      border-bottom: 3px solid #f1502f;
+    }
+    header h1 {
+      font-size: 2.5em;
+      color: #ffffff;
+    }
+    header h1 span { color: #f1502f; }
+    header p { color: #a0a0c0; margin-top: 8px; font-size: 1.1em; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+    .category {
+      background: #16213e;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      overflow: hidden;
+      border: 1px solid #2d3561;
+    }
+    .category-header {
+      background: #0f3460;
+      padding: 16px 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+    .category-header:hover { background: #1a4080; }
+    .category-header h2 {
+      color: #f0f0f0;
+      font-size: 1.3em;
+    }
+    .category-header .icon { font-size: 1.5em; color: #f1502f; }
+    .commands { padding: 10px 24px 20px; }
+    .command-item {
+      background: #1a1a3e;
+      border-left: 4px solid #533483;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      font-family: 'Consolas', 'Courier New', monospace;
+    }
+    .command-item .cmd { color: #e94560; font-size: 0.95em; }
+    .command-item .desc { color: #a0a0c0; font-size: 0.9em; margin-top: 4px; font-family: 'Segoe UI', sans-serif; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #606080;
+      font-size: 0.9em;
+      border-top: 1px solid #2d3561;
+      margin-top: 20px;
+    }
+    footer a { color: #f1502f; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Git & <span>GitHub</span></h1>
+  <p>Hoja de referencia de comandos esenciales</p>
+</header>
+
+<div class="container">
+
+  <!-- CONFIGURACIÓN -->
+  <div class="category">
+    <div class="category-header">
+      <h2><span class="icon">⚙️</span> Configuración</h2>
+      <span class="icon">▼</span>
+    </div>
+    <div class="commands">
+      <div class="command-item">
+        <div class="cmd">git config --global user.name "Nombre"</div>
+        <div class="desc">Configura el nombre de usuario global</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git config --global user.email "correo@ejemplo.com"</div>
+        <div class="desc">Configura el email global</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git config --global init.defaultBranch main</div>
+        <div class="desc">Establece la rama principal por defecto</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git config --list</div>
+        <div class="desc">Muestra toda la configuración actual</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INICIAR REPOSITORIO -->
+  <div class="category">
+    <div class="category-header">
+      <h2><span class="icon">📁</span> Iniciar / Clonar Repositorio</h2>
+      <span class="icon">▼</span>
+    </div>
+    <div class="commands">
+      <div class="command-item">
+        <div class="cmd">git init</div>
+        <div class="desc">Inicializa un repositorio Git local</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git clone https://github.com/usuario/repo.git</div>
+        <div class="desc">Clona un repositorio remoto</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git clone --depth 1 url</div>
+        <div class="desc">Clona solo el último commit (shallow clone)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESTADO Y CAMBIOS -->
+  <div class="category">
+    <div class="category-header">
+      <h2><span class="icon">👁️</span> Estado y Cambios</h2>
+      <span class="icon">▼</span>
+    </div>
+    <div class="commands">
+      <div class="command-item">
+        <div class="cmd">git status</div>
+        <div class="desc">Muestra el estado de los archivos</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git status -s</div>
+        <div class="desc">Estado corto y compacto</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git diff</div>
+        <div class="desc">Muestra los cambios sin confirmar</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git diff --staged</div>
+        <div class="desc">Muestra cambios en el área de staging</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AGREGAR Y CONFIRMAR -->
+  <div class="category">
+    <div class="category-header">
+      <h2><span class="icon">📦</span> Agregar y Confirmar (Stage & Commit)</h2>
+      <span class="icon">▼</span>
+    </div>
+    <div class="commands">
+      <div class="command-item">
+        <div class="cmd">git add archivo.txt</div>
+        <div class="desc">Agrega un archivo al área de staging</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git add .</div>
+        <div class="desc">Agrega todos los archivos modificados</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git add -p</div>
+        <div class="desc">Agrega cambios de forma interactiva</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git commit -m "Mensaje del commit"</div>
+        <div class="desc">Confirma cambios con un mensaje</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git commit -am "Mensaje"</div>
+        <div class="desc">Agrega y confirma cambios (solo para archivos ya seguidos)</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git commit --amend -m "Nuevo mensaje"</div>
+        <div class="desc">Modifica el último commit</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RAMAS -->
+  <div class="category">
+    <div class="category-header">
+      <h2><span class="icon">🌿</span> Ramas (Branches)</h2>
+      <span class="icon">▼</span>
+    </div>
+    <div class="commands">
+      <div class="command-item">
+        <div class="cmd">git branch</div>
+        <div class="desc">Lista todas las ramas locales</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git branch -a</div>
+        <div class="desc">Lista todas las ramas (locales y remotas)</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git branch nueva-rama</div>
+        <div class="desc">Crea una nueva rama</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git checkout nueva-rama</div>
+        <div class="desc">Cambia a la rama especificada</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git switch nueva-rama</div>
+        <div class="desc">Alternativa moderna para cambiar de rama</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git checkout -b nueva-rama</div>
+        <div class="desc">Crea y cambia a una nueva rama</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git merge rama-feature</div>
+        <div class="desc">Fusiona la rama especificada con la actual</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git branch -d nombre-rama</div>
+        <div class="desc">Elimina una rama (ya fusionada)</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git branch -D nombre-rama</div>
+        <div class="desc">Elimina una rama (forzado)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REMOTOS -->
+  <div class="category">
+    <div class="category-header">
+      <h2><span class="icon">☁️</span> Repositorios Remotos</h2>
+      <span class="icon">▼</span>
+    </div>
+    <div class="commands">
+      <div class="command-item">
+        <div class="cmd">git remote -v</div>
+        <div class="desc">Muestra los repositorios remotos configurados</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git remote add origin https://github.com/usuario/repo.git</div>
+        <div class="desc">Agrega un repositorio remoto</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git remote remove origin</div>
+        <div class="desc">Elimina un repositorio remoto</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git push -u origin main</div>
+        <div class="desc">Sube cambios y establece rama upstream</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git push origin --delete rama</div>
+        <div class="desc">Elimina una rama remota</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git pull origin main</div>
+        <div class="desc">Descarga y fusiona cambios del remoto</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git fetch origin</div>
+        <div class="desc">Descarga cambios sin fusionar</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORIAL -->
+  <div class="category">
+    <div class="category-header">
+      <h2><span class="icon">📜</span> Historial de Commits</h2>
+      <span class="icon">▼</span>
+    </div>
+    <div class="commands">
+      <div class="command-item">
+        <div class="cmd">git log</div>
+        <div class="desc">Muestra el historial de commits</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git log --oneline --graph --all</div>
+        <div class="desc">Historial visual en una línea</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git log -p -3</div>
+        <div class="desc">Muestra los últimos 3 commits con sus diferencias</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git show abc1234</div>
+        <div class="desc">Muestra detalles de un commit específico</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git log --author="Nombre" --since="2024-01-01"</div>
+        <div class="desc">Filtra commits por autor y fecha</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESHACER CAMBIOS -->
+  <div class="category">
+    <div class="category-header">
+      <h2><span class="icon">↩️</span> Deshacer Cambios</h2>
+      <span class="icon">▼</span>
+    </div>
+    <div class="commands">
+      <div class="command-item">
+        <div class="cmd">git restore archivo.txt</div>
+        <div class="desc">Restaura archivo al último commit (descarta cambios)</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git restore --staged archivo.txt</div>
+        <div class="desc">Saca un archivo del área de staging</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git reset HEAD~1</div>
+        <div class="desc">Deshace el último commit (mantiene cambios)</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git reset --hard HEAD~1</div>
+        <div class="desc">Deshace el último commit y elimina cambios (cuidado)</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git revert abc1234</div>
+        <div class="desc">Crea un commit nuevo que revierte otro (seguro para remoto)</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git checkout -- archivo.txt</div>
+        <div class="desc">Alternativa antigua para restaurar archivo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STASH -->
+  <div class="category">
+    <div class="category-header">
+      <h2><span class="icon">🗂️</span> Stash (Guardado Temporal)</h2>
+      <span class="icon">▼</span>
+    </div>
+    <div class="commands">
+      <div class="command-item">
+        <div class="cmd">git stash</div>
+        <div class="desc">Guarda cambios sin confirmar temporalmente</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git stash list</div>
+        <div class="desc">Lista todos los stashes guardados</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git stash pop</div>
+        <div class="desc">Recupera y elimina el último stash</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git stash apply</div>
+        <div class="desc">Recupera el último stash sin eliminarlo</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git stash drop stash@{0}</div>
+        <div class="desc">Elimina un stash específico</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAGS -->
+  <div class="category">
+    <div class="category-header">
+      <h2><span class="icon">🏷️</span> Tags (Etiquetas)</h2>
+      <span class="icon">▼</span>
+    </div>
+    <div class="commands">
+      <div class="command-item">
+        <div class="cmd">git tag v1.0.0</div>
+        <div class="desc">Crea un tag ligero</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git tag -a v1.0.0 -m "Versión 1.0"</div>
+        <div class="desc">Crea un tag anotado con mensaje</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git tag</div>
+        <div class="desc">Lista todos los tags</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git push origin v1.0.0</div>
+        <div class="desc">Sube un tag al repositorio remoto</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git push origin --tags</div>
+        <div class="desc">Sube todos los tags al remoto</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GITHUB ESPECÍFICO -->
+  <div class="category">
+    <div class="category-header">
+      <h2><span class="icon">🐙</span> GitHub - Comandos Específicos</h2>
+      <span class="icon">▼</span>
+    </div>
+    <div class="commands">
+      <div class="command-item">
+        <div class="cmd">gh repo create nombre-repo --public</div>
+        <div class="desc">Crea un nuevo repositorio en GitHub (requiere GitHub CLI)</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">gh repo clone usuario/repo</div>
+        <div class="desc">Clona un repositorio usando GitHub CLI</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">gh issue create --title "Bug" --body "Descripción"</div>
+        <div class="desc">Crea un issue desde la terminal</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">gh pr create --title "Feature" --body "Descripción"</div>
+        <div class="desc">Crea un Pull Request desde la terminal</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">gh pr list</div>
+        <div class="desc">Lista todos los Pull Requests abiertos</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">gh pr checkout 123</div>
+        <div class="desc">Descarga y cambia a un PR específico</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">gh pr merge 123 --merge</div>
+        <div class="desc">Fusiona un Pull Request</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">gh gist create archivo.txt</div>
+        <div class="desc">Crea un gist desde un archivo</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">gh auth login</div>
+        <div class="desc">Autentica GitHub CLI en tu cuenta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GITIGNORE -->
+  <div class="category">
+    <div class="category-header">
+      <h2><span class="icon">🙈</span> .gitignore</h2>
+      <span class="icon">▼</span>
+    </div>
+    <div class="commands">
+      <div class="command-item">
+        <div class="cmd">touch .gitignore</div>
+        <div class="desc">Crea un archivo .gitignore</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git rm -r --cached .</div>
+        <div class="desc">Elimina archivos del índice respetando .gitignore</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">echo "node_modules/" >> .gitignore</div>
+        <div class="desc">Agrega una regla al .gitignore</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS RÁPIDOS -->
+  <div class="category">
+    <div class="category-header">
+      <h2><span class="icon">💡</span> Tips Rápidos</h2>
+      <span class="icon">▼</span>
+    </div>
+    <div class="commands">
+      <div class="command-item">
+        <div class="cmd">git alias</div>
+        <div class="desc">Crea atajos personalizados: git config --global alias.co checkout</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git log --all --decorate --oneline --graph</div>
+        <div class="desc">Visualización completa y decorada del historial</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git cherry-pick abc1234</div>
+        <div class="desc">Aplica un commit específico a la rama actual</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git rebase main</div>
+        <div class="desc">Reorganiza commits sobre la rama main</div>
+      </div>
+      <div class="command-item">
+        <div class="cmd">git bisect start</div>
+        <div class="desc">Inicia búsqueda binaria para encontrar un commit con bug</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Git & GitHub - Comandos Esenciales</p>
+  <p style="margin-top: 6px;">Documentación oficial: <a href="https://git-scm.com/doc" target="_blank">git-scm.com</a> · <a href="https://docs.github.com" target="_blank">docs.github.com</a></p>
+</footer>
+
+</body>
+</html>
